@@ -1,7 +1,9 @@
 import fetch from "node-fetch";
 
+require("dotenv").config();
+
+const apiUrl = process.env.API_URL;
 export async function handler(event) {
-  const apiUrl = "https://cleanuri.com/api/v1/shorten";
   const body = event.body ? JSON.parse(event.body) : {};
   const { url } = body;
   const data = new URLSearchParams();
