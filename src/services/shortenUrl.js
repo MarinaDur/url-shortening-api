@@ -1,4 +1,4 @@
-// const apiUrl = "https://cleanuri.com/api/v1/shorten";
+import fetch from "node-fetch";
 
 export async function shortenLink(value) {
   try {
