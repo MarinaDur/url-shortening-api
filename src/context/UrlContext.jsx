@@ -10,8 +10,6 @@ function UrlProvider({ children }) {
   const [error, setError] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
-  console.log(isMenuOpen);
-
   function handleMenuToggle() {
     setIsMenuOpen((prev) => !prev);
   }
@@ -19,45 +17,6 @@ function UrlProvider({ children }) {
   function handleValue(e) {
     setValue(e.target.value);
   }
-
-  //   async function shortenLink() {
-  //     const data = new URLSearchParams();
-  //     data.append("url", value.trim());
-  //     //    const urlToShorten = "https://www.google.com";
-  //     //    const data = `url=${encodeURIComponent(urlToShorten)}`;
-
-  //     try {
-  //       const response = await fetch(apiUrl, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/x-www-form-urlencoded",
-  //         },
-  //         body: data,
-  //       });
-  //       const responseData = await response.json();
-
-  //       setSearchResults((prev) => {
-  //         if (responseData.result_url !== undefined) {
-  //           setError(false);
-  //           const resultsLength = prev.length;
-  //           return [
-  //             ...prev,
-  //             {
-  //               id: resultsLength,
-  //               longUrl: value,
-  //               shortUrl: responseData.result_url,
-  //             },
-  //           ];
-  //         } else {
-  //           setError(true);
-  //           return prev;
-  //         }
-  //       });
-  //     } catch (error) {
-  //       console.error("error:", error);
-  //     }
-  //     setValue("");
-  //   }
 
   async function handleSearch() {
     const data = await shortenLink(value);
@@ -140,7 +99,6 @@ function UrlProvider({ children }) {
         value,
         handleSearch,
         searchResults,
-        // searchUrl,
         handleCopy,
         isCopied,
         handleSubmit,

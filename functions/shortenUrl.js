@@ -1,10 +1,12 @@
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
-exports.handler = async function (event) {
-  const apiUrl = "https://cleanuri.com/api/v1/shorten";
+const apiUrl = "https://cleanuri.com/api/v1/shorten";
 
+export async function handler(event) {
+  const body = event.body ? JSON.parse(event.body) : {};
+  const { url } = body;
   const data = new URLSearchParams();
-  data.append("url", event.body.trim());
+  data.append("url", url);
 
   try {
     const response = await fetch(apiUrl, {
@@ -16,21 +18,26 @@ exports.handler = async function (event) {
     });
 
     const responseData = await response.json();
-    console.log("my func chat's value:", responseData.shortUrl);
-    console.log("my func my value:", responseData.result_url);
+    console.log("netlify func chat's value:", responseData);
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        shortUrl: responseData.result_url,
-      }),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // or your specific origin
+        // other headers...
+      },
+      body: JSON.stringify(responseData),
     };
   } catch (error) {
     return {
       statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*", // or your specific origin
+        // other headers...
+      },
       body: JSON.stringify({
         error: "Internal Server Error",
       }),
     };
   }
-};
+}
