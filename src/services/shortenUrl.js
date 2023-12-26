@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 export async function shortenLink(value) {
   try {
     const response = await fetch("/.netlify/functions/shortenUrl", {
