@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "fetch-blob": "^4.0.0",
+    "formdata-polyfill": "^4.0.10",
     "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,5 +28,8 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.0.8",
     "vite-plugin-eslint": "^1.8.1"
+  },
+  "engines": {
+    "node": "^18.16.0"
   }
 }
