@@ -9,8 +9,7 @@ export async function shortenLink(value) {
     });
 
     const responseData = await response.json();
-    // console.log("my func chat's value:", responseData.shortUrl);
-    console.log("my func my value:", responseData.result_url);
+
     return responseData.result_url;
   } catch (error) {
     console.error("error:", error);

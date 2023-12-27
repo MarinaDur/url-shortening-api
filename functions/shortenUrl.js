@@ -20,23 +20,22 @@ export async function handler(event) {
     });
 
     const responseData = await response.json();
-    console.log("netlify func chat's value:", responseData);
 
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*", // or your specific origin
-        // other headers...
-      },
+      // headers: {
+      //    "Access-Control-Allow-Origin": "*",
+
+      // },
       body: JSON.stringify(responseData),
     };
   } catch (error) {
     return {
       statusCode: 500,
-      headers: {
-        "Access-Control-Allow-Origin": "*", // or your specific origin
-        // other headers...
-      },
+      // headers: {
+      //   "Access-Control-Allow-Origin": "*",
+
+      // },
       body: JSON.stringify({
         error: "Internal Server Error",
       }),
